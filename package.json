@@ -1,0 +1,19 @@
+{
+  "name": "mozilla-commonplace",
+  "version": "0.0.2",
+  "repository": {
+    "url": "git://github.com/mozilla/commonplace.git",
+    "type": "git"
+  },
+  "engines": {
+    "node": ">= 0.10.x",
+    "npm": ">= 1.1.x"
+  },
+  "dependencies": {
+    "bower": "0.9.x",
+    "clean-css": "1.0.x",
+    "nunjucks": "0.1.9",
+    "stylus": "0.32.x",
+    "uglify-js": "2.3.x"
+  }
+}
