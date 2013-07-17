@@ -8,16 +8,16 @@ define('settings', ['l10n', 'settings_local', 'underscore'], function(l10n, sett
 
         storage_version: '0',
 
-        simulate_nav_pay: false,
+        param_whitelist: ['q', 'sort'],
+
+        model_prototypes: {
+            // Dummy prototypes to facilitate testing
+            'dummy': 'id',
+            'dummy2': 'id'
+        },
 
         fragment_error_template: 'errors/fragment.html',
         pagination_error_template: 'errors/pagination.html',
-
-        payments_enabled: true,
-        tracking_enabled: false,
-        action_tracking_enabled: true,
-        upsell_enabled: true,
-        newsletter_enabled: true,
 
         tracking_id: 'UA-36116321-6',
 
@@ -38,7 +38,6 @@ define('settings', ['l10n', 'settings_local', 'underscore'], function(l10n, sett
 
         persona_unverified_issuer: 'login.persona.org',
 
-        title_suffix: 'Firefox Marketplace',
-        carrier: null
+        title_suffix: 'Firefox Marketplace'
     });
 });

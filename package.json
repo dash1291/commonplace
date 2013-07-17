@@ -1,5 +1,5 @@
 {
-  "name": "mozilla-commonplace",
+  "name": "commonplace",
   "version": "0.0.2",
   "repository": {
     "url": "git://github.com/mozilla/commonplace.git",
@@ -15,5 +15,8 @@
     "nunjucks": "0.1.9",
     "stylus": "0.32.x",
     "uglify-js": "2.3.x"
+  },
+  "bin": {
+    "damper": "./bin/damper"
   }
 }
