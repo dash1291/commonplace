@@ -10,7 +10,7 @@
     "npm": ">= 1.1.x"
   },
   "dependencies": {
-    "bower": "0.9.x",
+    "bower": "0.10.x",
     "clean-css": "1.0.x",
     "nunjucks": "0.1.9",
     "stylus": "0.32.x",

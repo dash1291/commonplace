@@ -9,6 +9,8 @@ var opts = utils.opts;
 var glob = utils.glob;
 var srcdir = fs.existsSync('./hearth/') ? './hearth' : './src';  // For Fireplace compat
 
+process.title = 'damper';
+
 var mimes = {
     'css': 'text/css',
     'jpg': 'image/jpeg',

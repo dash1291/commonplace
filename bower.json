@@ -1,0 +1,24 @@
+{
+  "name": "commonplace",
+  "version": "0.0.2",
+  "main": [
+    "src/media/fonts/FeuraSans/*",
+    "src/media/js/*.js",
+    "src/media/js/*.js.dist",
+    "src/media/js/lib/*.js",
+    "src/media/js/views/*.js",
+    "src/templates/*.html"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bin",
+    "bower_components",
+    "components",
+    "lib",
+    "test",
+    "tests",
+    "src/media/js/views/hello_world.js",
+    "src/templates/hello.html"
+  ]
+}

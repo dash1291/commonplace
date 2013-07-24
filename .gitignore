@@ -35,3 +35,9 @@ tags
 yulelog_*
 .node-version
 settings_local.py
+
+src/media/js/main.js
+src/media/js/rewriters.js
+src/media/js/routes.js
+src/media/js/routes_api.js
+src/media/js/settings_local.js

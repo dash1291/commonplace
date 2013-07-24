@@ -1,4 +1,25 @@
 (function() {var templates = {};
+templates["confirmation.html"] = (function() {function root(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<a href=\"#\" class=\"close\">";
+output += runtime.suppressValue((lineno = 0, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Close"])), env.autoesc);
+output += "</a>\n<p class=\"content\"></p>\n<div class=\"buttons\">\n  <button class=\"button btn-cancel alt\">";
+output += runtime.suppressValue((lineno = 3, colno = 42, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["No"])), env.autoesc);
+output += "</button>\n  <button class=\"button yes\">";
+output += runtime.suppressValue((lineno = 4, colno = 31, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Yes"])), env.autoesc);
+output += "</button>\n</div>\n";
+return output;
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+return {
+root: root
+};
+})();
 templates["debug.html"] = (function() {function root(env, context, frame, runtime) {
 var lineno = null;
 var colno = null;
@@ -141,6 +162,187 @@ output += "\n      </ol>\n    ";
 }
 }frame = frame.pop();
 output += "\n  </div>\n</section>\n";
+return output;
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+return {
+root: root
+};
+})();
+templates["errors/fragment.html"] = (function() {function root(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<span class=\"fragment-error\">\n  <b>";
+output += runtime.suppressValue((lineno = 1, colno = 7, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Oh no!"])), env.autoesc);
+output += "</b>\n  ";
+output += runtime.suppressValue((lineno = 2, colno = 4, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["An error occurred."])), env.autoesc);
+output += "\n</span>\n";
+return output;
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+return {
+root: root
+};
+})();
+templates["errors/pagination.html"] = (function() {function root(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<li class=\"pagination-error loadmore\">\n  <span class=\"error-text\">";
+output += runtime.suppressValue((lineno = 1, colno = 29, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Error loading more"])), env.autoesc);
+output += "</span>\n  <button class=\"button alt\" data-url=\"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "more_url"), env.autoesc);
+output += "\">";
+output += runtime.suppressValue((lineno = 2, colno = 53, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Try Again"])), env.autoesc);
+output += "</button>\n  <div class=\"spinner alt btn-replace\"></div>\n</li>\n";
+return output;
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+return {
+root: root
+};
+})();
+templates["footer.html"] = (function() {function root(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<div id=\"directory-footer\" class=\"main full c\">\n  <div class=\"group\">\n    <a class=\"button alt devhub\" href=\"/developers/\">";
+output += runtime.suppressValue((lineno = 2, colno = 55, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Develop Apps"])), env.autoesc);
+output += "</a>\n  </div>\n  <div class=\"group links\">\n    <a href=\"/developers/\">";
+output += runtime.suppressValue((lineno = 5, colno = 29, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Developer Hub"])), env.autoesc);
+output += "</a>\n    <a href=\"#\" class=\"submit-feedback\">";
+output += runtime.suppressValue((lineno = 6, colno = 42, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Feedback"])), env.autoesc);
+output += "</a>\n    <a href=\"https://support.mozilla.org/products/firefox-os/marketplace\" target=\"_blank\">";
+output += runtime.suppressValue((lineno = 7, colno = 92, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Support"])), env.autoesc);
+output += "</a>\n  </div>\n  <div class=\"language group links\">\n    <a href=\"";
+output += runtime.suppressValue((lineno = 10, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["settings"])), env.autoesc);
+output += "\" class=\"region region-";
+output += runtime.suppressValue((lineno = 10, colno = 70, runtime.callWrap(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "user")),"get_setting", env.autoesc), "user[\"get_settin\"]", ["region","worldwide"])), env.autoesc);
+output += "\">\n      ";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "REGIONS")),(lineno = 11, colno = 31, runtime.callWrap(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "user")),"get_setting", env.autoesc), "user[\"get_settin\"]", ["region","worldwide"])), env.autoesc), env.autoesc);
+output += "</a>\n    <a href=\"";
+output += runtime.suppressValue((lineno = 12, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["purchases"])), env.autoesc);
+output += "\">";
+output += runtime.suppressValue((lineno = 12, colno = 35, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["My Apps"])), env.autoesc);
+output += "</a>\n    ";
+if((lineno = 13, colno = 27, runtime.callWrap(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "user")),"get_permission", env.autoesc), "user[\"get_permis\"]", ["developer"]))) {
+output += "\n      <a href=\"/developers/submissions\">";
+output += runtime.suppressValue((lineno = 14, colno = 42, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["My Submissions"])), env.autoesc);
+output += "</a>\n    ";
+}
+output += "\n    ";
+if((lineno = 16, colno = 27, runtime.callWrap(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "user")),"get_permission", env.autoesc), "user[\"get_permis\"]", ["reviewer"]))) {
+output += "\n      <a href=\"/reviewers/apps/queue/\" class=\"only-logged-in\">";
+output += runtime.suppressValue((lineno = 17, colno = 64, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Reviewer Tools"])), env.autoesc);
+output += "</a>\n    ";
+}
+output += "\n    ";
+if((lineno = 19, colno = 27, runtime.callWrap(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "user")),"get_permission", env.autoesc), "user[\"get_permis\"]", ["lookup"]))) {
+output += "\n      <a href=\"/lookup/\" class=\"only-logged-in\">";
+output += runtime.suppressValue((lineno = 20, colno = 50, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Lookup Tool"])), env.autoesc);
+output += "</a>\n    ";
+}
+output += "\n  </div>\n</div>\n<div id=\"footer\">\n  <div class=\"pad\">\n    <h1 id=\"footzilla\"><a href=\"https://www.mozilla.org/\" target=\"_blank\">mozilla</a></h1>\n    <p>\n      ";
+output += runtime.suppressValue((lineno = 28, colno = 8, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Except where otherwise <a href=\"{legal_url}\" target=\"_blank\">noted</a>, content on this site is licensed under the <a href=\"{cc_url}\" target=\"_blank\">Creative Commons Attribution Share-Alike License v3.0</a> or any later version.",runtime.makeKeywordArgs({"legal_url": "http://www.mozilla.org/about/legal.html#site","cc_url": "http://creativecommons.org/licenses/by-sa/3.0/"})])), env.autoesc);
+output += "\n    </p>\n    <ul>\n      <li><a href=\"";
+output += runtime.suppressValue((lineno = 33, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["privacy"])), env.autoesc);
+output += "\">";
+output += runtime.suppressValue((lineno = 33, colno = 39, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Privacy Policy"])), env.autoesc);
+output += "</a></li>\n      <li><a href=\"";
+output += runtime.suppressValue((lineno = 34, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["terms"])), env.autoesc);
+output += "\">";
+output += runtime.suppressValue((lineno = 34, colno = 37, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Terms of Use"])), env.autoesc);
+output += "</a></li>\n      <li><a href=\"http://mozilla.com/legal/fraud-report/index.html\" target=\"_blank\">\n        ";
+output += runtime.suppressValue((lineno = 36, colno = 10, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Report Trademark Abuse"])), env.autoesc);
+output += "</a></li>\n    </ul>\n  </div>\n</div>\n";
+return output;
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+return {
+root: root
+};
+})();
+templates["header.html"] = (function() {function root(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<nav role=\"navigation\">\n  <a href=\"#\" id=\"nav-back\" class=\"header-button icon back\" title=\"";
+output += runtime.suppressValue((lineno = 1, colno = 69, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Back"])), env.autoesc);
+output += "\"><b>";
+output += runtime.suppressValue((lineno = 1, colno = 85, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Back"])), env.autoesc);
+output += "</b></a>\n  <h1 class=\"site\"><a href=\"";
+output += runtime.suppressValue((lineno = 2, colno = 32, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["homepage"])), env.autoesc);
+output += "\"><span class=\"wordmark\">Firefox Marketplace</span></a></h1>\n  <span class=\"flex-shift\"></span>\n  <form novalidate method=\"GET\" id=\"search\" class=\"search\" action=\"";
+output += runtime.suppressValue((lineno = 4, colno = 71, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["search"])), env.autoesc);
+output += "\">\n    <label for=\"search-q\">";
+output += runtime.suppressValue((lineno = 5, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Search"])), env.autoesc);
+output += "</label>\n    <div id=\"site-search-suggestions\" data-src=\"\"></div>\n    <input id=\"search-q\" class=\"query-input\" type=\"search\" name=\"q\" title=\"\"\n         autocapitalize=\"off\" autocomplete=\"off\" autocorrect=\"off\" placeholder=\"";
+output += runtime.suppressValue((lineno = 8, colno = 82, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Search"])), env.autoesc);
+output += "\" required\n         value=\"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "z")),"context", env.autoesc)),"search", env.autoesc) || "", env.autoesc);
+output += "\">\n    <a href=\"#\" class=\"close search-clear\" title=\"";
+output += runtime.suppressValue((lineno = 10, colno = 52, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Clear"])), env.autoesc);
+output += "\">";
+output += runtime.suppressValue((lineno = 10, colno = 66, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Clear"])), env.autoesc);
+output += "</a>\n  </form>\n  <span class=\"flex-span\"></span>\n  <div class=\"act-tray\">\n    <a href=\"";
+output += runtime.suppressValue((lineno = 14, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["settings"])), env.autoesc);
+output += "\" class=\"header-button icon settings\" title=\"";
+output += runtime.suppressValue((lineno = 14, colno = 77, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Settings"])), env.autoesc);
+output += "\"></a>\n    <div class=\"account-links only-logged-in\">\n      <ul>\n        <li>\n          <a href=\"";
+output += runtime.suppressValue((lineno = 18, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["settings"])), env.autoesc);
+output += "\">\n            <b>";
+output += runtime.suppressValue((lineno = 19, colno = 32, runtime.callWrap(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "user")),"get_setting", env.autoesc), "user[\"get_settin\"]", ["email"])), env.autoesc);
+output += "</b>\n            ";
+output += runtime.suppressValue((lineno = 20, colno = 14, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Edit Account Settings"])), env.autoesc);
+output += "</a>\n        </li>\n        <li><a href=\"";
+output += runtime.suppressValue((lineno = 22, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "url"), "url", ["purchases"])), env.autoesc);
+output += "\">";
+output += runtime.suppressValue((lineno = 22, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["My Apps"])), env.autoesc);
+output += "</a></li>\n        ";
+if((lineno = 23, colno = 31, runtime.callWrap(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "user")),"get_permission", env.autoesc), "user[\"get_permis\"]", ["developer"]))) {
+output += "\n          <li><a href=\"/developers/submissions\">";
+output += runtime.suppressValue((lineno = 24, colno = 50, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["My Submissions"])), env.autoesc);
+output += "</a></li>\n        ";
+}
+output += "\n        <li><a class=\"submit-feedback\" href=\"#\">";
+output += runtime.suppressValue((lineno = 26, colno = 50, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Feedback"])), env.autoesc);
+output += "</a></li>\n        <li><a href=\"#\" class=\"logout\">";
+output += runtime.suppressValue((lineno = 27, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Sign Out"])), env.autoesc);
+output += "</a></li>\n      </ul>\n    </div>\n  </div>\n  <a href=\"#\" class=\"header-button persona\">";
+output += runtime.suppressValue((lineno = 31, colno = 46, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Sign In"])), env.autoesc);
+output += "</a>\n</nav>\n";
+return output;
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+return {
+root: root
+};
+})();
+templates["hello.html"] = (function() {function root(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<div>\n<h1>";
+output += runtime.suppressValue((lineno = 1, colno = 6, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Hello World!"])), env.autoesc);
+output += "</h1>\n<p>";
+output += runtime.suppressValue((lineno = 2, colno = 5, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "_"), "_", ["Congratulations! If you're seeing this page, it means you've properly configured Commonplace."])), env.autoesc);
+output += "</p>\n</div>";
 return output;
 } catch (e) {
   runtime.handleError(e, lineno, colno);
