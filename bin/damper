@@ -7,7 +7,7 @@ var stylus = require('stylus');
 var utils = require('../lib/utils.js');
 var opts = utils.opts;
 var glob = utils.glob;
-var srcdir = fs.existsSync('./hearth/') ? './hearth' : './src';  // For Fireplace compat
+var srcdir = require('../lib/info.js').src_dir();
 
 process.title = 'damper';
 
@@ -93,7 +93,8 @@ function reload() {
     watch('./compile_templates.js', null, 'nunjucks');
     watch('../lib', 'js', 'nunjucks');
 
-    watch(srcdir + '/media/css', 'styl', 'stylus');
+    // Uncomment following when CSS files are added.
+    // watch(srcdir + '/media/css', 'styl', 'stylus');
     watch(srcdir + '/templates', 'html', 'nunjucks');
 
     // When the builder is updated, recompile the templates.

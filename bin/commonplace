@@ -7,8 +7,9 @@ function help() {
         '',
         'Commands:',
         '  install      Run this command to instantiate commonplace.',
-        '  update       This command will update commonplace modules.'
-
+        '  update       This command will update commonplace modules.',
+        '  langpacks    This command will generate langpacks out of `.po` files.',
+        '  clean        Run this to clean up static files, templates and langpacks.'
     ].join('\n'));
 }
 
@@ -27,6 +28,7 @@ var path = require('path');
 
 var info = require('../lib/info');
 var utils = require('../lib/utils');
+var srcdir = require('../lib/info.js').src_dir()
 
 function copy_dir(src, dest) {
     // `dest` is expected to be the path to a directory.
@@ -83,6 +85,86 @@ function copy_dir(src, dest) {
 
 }
 
+function rmdirRecursive(path) {
+    // Recursive directory deletion.
+    if (!fs.existsSync(path)) {
+        console.warn('Specified path does not exist: ' + path);
+        return;
+    }
+    var list = fs.readdirSync(path);
+    list.forEach(function(file) {
+        file = path + '/' + file;
+        var stat = fs.statSync(file);
+        if (stat && stat.isDirectory()) {
+            rmdir(file);
+        } else {
+            fs.unlinkSync(file);
+        }
+    });
+    fs.rmdir(path);
+    console.log('Removed: ' + path);
+}
+
+function removeFile(path) {
+    if (!fs.existsSync(path)) {
+        console.warn('Cannot remove non-existing file: ' + path);
+        return;
+    }
+    fs.unlink(path, function() {
+        if (err) {
+            console.warn('Cannot delete: ' + path);
+        } else {
+            console.log('Removed: ' + path);
+        }
+    });
+}
+
+var process_file = require('../lib/generate_langpacks.js').process_file;
+
+function cleanup() {
+    var targets = ['_tmp',
+        'src/templates.js',
+        'src/media/css/include.css',
+        'src/media/js/include.js',
+        'src/locales/'
+    ];
+    targets.forEach(function(path) {
+        if (path.substr(1).indexOf('.') !== -1) {
+            removeFile(path);
+        } else {
+            rmdirRecursive(path);
+        }
+    });
+
+    utils.glob('src/media/css/', '.styl.css', function(err, filepaths) {
+        if (err) {
+            console.warn('`src/media/css` does not exist. Skipping.');
+            return;
+        }
+        filepaths.forEach(function(filepath) {
+            removeFile(filepath);
+        });
+    });
+}
+
+function generate_langpacks() {
+    var langpacks_path = src_path + '/locales/';
+    if (!fs.existsSync(langpacks_path)) {
+        fs.mkdirSync(langpacks_path);
+    }
+    utils.glob('locale', '.po', function(err, filepaths) {
+        if (err) {
+            console.warn('Oops. Maybe `locale/` does not exist.\n' +
+                'Failed to generate langpacks.');
+            return;
+        }
+        filepaths.forEach(function(filepath) {
+            var path_regex = /locale\/([^\/]+?)\/LC_MESSAGES\/(.+?).po/;
+            var match = path_regex.exec(filepath);
+            process_file(filepath, match[1], langpacks_path + match[1] + '.js');
+        });
+    });
+}
 
 switch (argv[0]) {
     case 'install':
@@ -140,8 +222,13 @@ switch (argv[0]) {
     case 'help':
         help();
         break;
+    case 'clean':
+        cleanup();
+        break;
+    case 'langpacks':
+        generate_langpacks();
+        break;
     default:
         console.error('Unrecognized command "' + argv[0] + '"');
         help();
 }
-
