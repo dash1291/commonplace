@@ -1,7 +1,8 @@
 define('builder',
-    ['templates', 'models', 'requests', 'settings', 'z', 'nunjucks.compat'],
-    function(nunjucks, models, requests, settings, z) {
+    ['log', 'templates', 'models', 'requests', 'settings', 'z', 'nunjucks.compat'],
+    function(log, nunjucks, models, requests, settings, z) {
 
+    var console = log('builder');
     var SafeString = nunjucks.require('runtime').SafeString;
 
     var counter = 0;
@@ -47,10 +48,7 @@ define('builder',
 
     function extend(base, extension, defaults) {
         for (var i in extension) {
-            if (defaults && i in base) {
-                continue;
-            }
-            if (extension.hasOwnProperty(i)) {
+            if (!(defaults && i in base) && extension.hasOwnProperty(i)) {
                 base[i] = extension[i];
             }
         }
@@ -90,6 +88,7 @@ define('builder',
                 // visible page.
                 var url = el.getAttribute('data-url');
                 injector(url, el.parentNode, target).done(function() {
+                    console.log('Pagination completed');
                     fire(page, 'loaded_more');
                 }).fail(function() {
                     url += (url.indexOf('?') + 1 ? '&' : '?') + '_bust=' + (new Date()).getTime();
@@ -131,13 +130,13 @@ define('builder',
                             data = data[signature.pluck];
                         }
                         // `as` passes the data to the models for caching.
-                        if (!dont_cast && 'as' in signature) {
+                        if (data && !dont_cast && 'as' in signature) {
                             console.groupCollapsed('Casting ' + signature.as + 's to model cache...');
                             models(signature.as).cast(data);
                             console.groupEnd();
                         }
                         var content = '';
-                        if (empty && Array.isArray(data) && data.length === 0) {
+                        if (empty && (!data || Array.isArray(data) && data.length === 0)) {
                             content = empty();
                         } else {
                             context.ctx.this = data;
@@ -157,10 +156,11 @@ define('builder',
                     if (request.__cached) {
                         has_cached_elements = true;
 
+                        var rendered;
                         // This will run synchronously.
                         request.done(function(data) {
                             context.ctx['response'] = data;
-                            out = get_result(data, true);
+                            rendered = get_result(data, true);
 
                             // Now update the response with the values from the model cache
                             // For details, see bug 870447
@@ -183,6 +183,13 @@ define('builder',
                                 // and aren't an array. :(
                             }
                         });
+
+                        if (replace) {
+                            parse_and_replace(rendered, replace);
+                        } else {
+                            out = rendered;
+                        }
+
                         if (signature.paginate) {
                             pool.done(function() {
                                 make_paginatable(injector, document.getElementById(uid), signature.paginate);
