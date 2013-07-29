@@ -7,7 +7,7 @@ var stylus = require('stylus');
 var utils = require('../lib/utils.js');
 var opts = utils.opts;
 var glob = utils.glob;
-var srcdir = require('../lib/info.js').src_dir();
+var src_dir = require('../lib/info.js').src_dir();
 
 process.title = 'damper';
 
@@ -22,7 +22,7 @@ var mimes = {
 };
 
 var opts = opts(process.argv.slice(2),
-                {host: '0.0.0.0', port: '8675', l10n: false, compile: false});
+                {host: '0.0.0.0', port: '8675', compile: false});
 
 if (!opts.compile) {
     // Here's the local server.
@@ -35,7 +35,7 @@ if (!opts.compile) {
             request.url);
 
         function writeIndex() {
-            fs.readFile(srcdir + '/index.html', function(error, content) {
+            fs.readFile(src_dir + '/index.html', function(error, content) {
                 // We'll assume that you don't delete index.html.
                 response.writeHead(200, {'Content-Type': 'text/html'});
                 response.end(content, 'utf-8');
@@ -51,7 +51,7 @@ if (!opts.compile) {
             request.url = request.url.substr(0, qindex);
         }
 
-        var filePath = srcdir + request.url;
+        var filePath = src_dir + request.url;
         fs.exists(filePath, function(exists) {
             if (exists && !fs.statSync(filePath).isDirectory()) {
                 fs.readFile(filePath, function(error, content) {
@@ -83,32 +83,8 @@ if (!opts.compile) {
 
 var watched_filepaths = [];
 
-
-function reload() {
-    watched_filepaths.forEach(fs.unwatchFile);
-    watched_filepaths = [];
-
-    // "restart" is a special action keyword
-    watch('./damper.js', null, 'restart');
-    watch('./compile_templates.js', null, 'nunjucks');
-    watch('../lib', 'js', 'nunjucks');
-
-    watch(srcdir + '/media/css', 'styl', 'stylus');
-    watch(srcdir + '/templates', 'html', 'nunjucks');
-
-    // When the builder is updated, recompile the templates.
-    watch(srcdir + '/js/builder.js', null, 'nunjucks');
-}
-
-var nunjucks_opts = {};
-if (opts.l10n || opts.compile === true || opts.compile === 'l10n') {
-    nunjucks_opts.l10n = true;
-}
 function runCommand(command, filepath) {
     switch (command) {
-        case 'restart':
-            console.log('Restarting...');
-            return reload();
         case 'stylus':
             filepath = filepath || opts.path;
 
@@ -132,10 +108,8 @@ function runCommand(command, filepath) {
         case 'nunjucks':
             console.log('Recompiling templates...');
             require('../lib/compile').process(
-                srcdir + '/templates',
-                srcdir + '/templates.js',
-                'locale/templates/LC_MESSAGES/messages.pot',
-                nunjucks_opts
+                src_dir + '/templates',
+                src_dir + '/templates.js'
             );
             break;
     }
@@ -186,6 +160,11 @@ if (opts.compile && opts.compile !== true) {
     runCommand(opts.compile);
 } else {
     runCommand('nunjucks');
-    reload();
+
+    watch(src_dir + '/media/css', 'styl', 'stylus');
+    watch(src_dir + '/templates', 'html', 'nunjucks');
+
+    // When the builder is updated, recompile the templates.
+    watch(src_dir + '/js/builder.js', null, 'nunjucks');
 }
 

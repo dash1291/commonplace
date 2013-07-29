@@ -2,7 +2,7 @@ define('settings', ['l10n', 'settings_local', 'underscore'], function(l10n, sett
     var gettext = l10n.gettext;
 
     return _.defaults(settings_local, {
-        init_module: 'marketplace',
+        init_module: 'main',
         default_locale: 'en-US',
         api_url: 'http://' + window.location.hostname,  // No trailing slash, please.
 
@@ -21,23 +21,8 @@ define('settings', ['l10n', 'settings_local', 'underscore'], function(l10n, sett
 
         tracking_id: 'UA-36116321-6',
 
-        REGION_CHOICES_SLUG: {
-            'worldwide': gettext('Worldwide'),
-            'br': gettext('Brazil'),
-            'co': gettext('Colombia'),
-            'me': gettext('Montenegro'),
-            'pl': gettext('Poland'),
-            'rs': gettext('Serbia'),
-            'es': gettext('Spain'),
-            'uk': gettext('United Kingdom'),
-            'us': gettext('United States'),
-            've': gettext('Venezuela')
-        },
-
-        timing_url: '',  // TODO: figure this out
-
         persona_unverified_issuer: 'login.persona.org',
 
-        title_suffix: 'Firefox Marketplace'
+        title_suffix: 'Commonplace App'
     });
 });
