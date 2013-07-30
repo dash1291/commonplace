@@ -40,7 +40,5 @@ To update your commonplace installation, simply run `commonplace update` from th
 
 ## Things that haven't been built yet
 
-* `commonplace update`
 * `commonplace lint`
-* L10n tools
 * a bunch of other stuff

@@ -30,7 +30,7 @@ switch (argv[0]) {
         commonplace.install();
         break;
     case 'update':
-        // git clone git://github.com/mozilla/commonplace.git /tmp/commonplace
+        commonplace.update();
         break;
     case 'clean':
         commonplace.clean();
