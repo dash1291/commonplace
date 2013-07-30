@@ -24,7 +24,7 @@ export PATH=/usr/local/share/npm/bin:$PATH
 
 Create a new repository for your project. In it, create a basic `package.json` file. You can do this very easily by running `npm init`.
 
-Next, install commonplace by running `npm install commonplace --save`.
+Next, install commonplace by running `npm install commonplace -g`. If you already have commonplace installed, update it with `npm update -g commonplace`.
 
 ### Creating the commonplace base template
 
@@ -33,9 +33,7 @@ At this point, simply run `commonplace install`. Running this command will creat
 
 ## Updating Commonplace
 
-Once you've run an `npm update`, you'll be running the latest commonplace scripts, but your modules will be out of date.
-
-To update your commonplace installation, simply run `commonplace update` from the root of your project. Commonplace will update all of the shared modules in-place.
+To update your commonplace installation, simply run `commonplace update --npm` from the root of your project. Commonplace will automatically update the global commonplace library to the latest version and update all of the shared modules.
 
 
 ## Things that haven't been built yet
