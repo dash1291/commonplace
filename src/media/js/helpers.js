@@ -59,7 +59,7 @@ define('helpers',
 
     safe_filter('stringify', JSON.stringify);
 
-    filters.format = format.format;
+    filters.format = require('format').format;
     filters.sum = function(obj) {
         return obj.reduce(function(mem, num) {return mem + num;}, 0);
     };
