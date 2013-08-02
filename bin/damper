@@ -165,6 +165,6 @@ if (opts.compile && opts.compile !== true) {
     watch(src_dir + '/templates', 'html', 'nunjucks');
 
     // When the builder is updated, recompile the templates.
-    watch(src_dir + '/js/builder.js', null, 'nunjucks');
+    watch(src_dir + '/media/js/builder.js', null, 'nunjucks');
 }
 

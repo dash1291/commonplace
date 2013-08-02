@@ -29,6 +29,7 @@ require.config({
             'templates',
             //'tracking',
             'user',
+            'views',
             'z'
         ],
     function(_) {
