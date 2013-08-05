@@ -1,7 +1,3 @@
-/*
-`mv` this file to hearth/media/js/settings_local.js (remove the .dist)
-*/
-
 define('settings_local', [], function() {
     // Override settings here!
     return {
