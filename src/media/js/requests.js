@@ -140,22 +140,22 @@ define('requests',
         return def;
     }
 
-    function get(url, nocache) {
+    function get(url, nocache, pcache) {
         if (cache.has(url) && !nocache) {
             console.log('GETing from cache', url);
             return defer.Deferred()
                         .resolve(cache.get(url))
                         .promise({__cached: true});
         }
-        return _get.apply(this, arguments);
+        return _get.apply(this, arguments, pcache);
     }
 
-    function _get(url, nocache) {
+    function _get(url, nocache, pcache) {
         console.log('GETing', url);
         return ajax('GET', url).done(function(data, xhr) {
             console.log('GOT', url);
             if (!nocache) {
-                cache.set(url, data);
+                cache.set(url, data, pcache);
             }
         });
     }
