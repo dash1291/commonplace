@@ -1,6 +1,6 @@
 {
   "name": "commonplace",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": {
     "url": "git://github.com/mozilla/commonplace.git",
     "type": "git"
