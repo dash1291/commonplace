@@ -10,7 +10,9 @@ function help() {
         '  update           This command will update commonplace modules.',
         '  extract_strings  This command will extract strings into a `.pot` file.',
         '  langpacks        This command will generate langpacks out of `.po` files.',
-        '  clean            Run this to clean up static files, templates and langpacks.'
+        '  clean            Run this to clean up static files, templates and langpacks.',
+        '  raw_includes     Combine all the CSS and JS assets',
+        '  includes         Combine and minify all the CSS and JS assets.'
     ].join('\n'));
 }
 
@@ -40,6 +42,12 @@ switch (argv[0]) {
         break;
     case 'langpacks':
         commonplace.generate_langpacks();
+        break;
+    case 'raw_includes':
+        commonplace.build_includes(true);
+        break;
+    case 'includes':
+        commonplace.build_includes();
         break;
     case 'help':
         help();
