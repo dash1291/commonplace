@@ -14,14 +14,14 @@ define('urls',
             // Strip the ^ and $ from the route pattern.
             var url = route.pattern.substring(1, route.pattern.length - 1);
 
+            if (url.indexOf('?') !== -1) {
+                url = url.replace(optional_pattern, '');
+            }
+
             // Replace each matched group with a positional formatting placeholder.
             var i = 0;
             while (group_pattern.test(url)) {
                 url = url.replace(group_pattern, '{' + i++ + '}');
-            }
-
-            if (url.indexOf('?') !== -1) {
-                url = url.replace(optional_pattern, '');
             }
 
             // Check that we got the right number of arguments.
