@@ -30,6 +30,7 @@ Next, install commonplace by running `npm install commonplace -g`. If you alread
 
 At this point, simply run `commonplace install`. Running this command will create a `src/` directory in your project containing the minimum files needed to run your code. Other directories will also be created for L10n and other functions.
 
+The `--gitignore` option is available for `commonplace install`. It will copy a `.gitignore` into your project. If one already exists, it will print a command to allow you to manually overwrite your current `.gitignore` file.
 
 ## Updating Commonplace
 
