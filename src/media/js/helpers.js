@@ -101,6 +101,10 @@ define('helpers',
         max: Math.max,
         min: Math.min,
         range: _.range,
+        identity: function(obj) {
+            if ('__keywords' in obj) delete obj.__keywords;
+            return obj;
+        },
 
         REGIONS: require('settings').REGION_CHOICES_SLUG,
 
