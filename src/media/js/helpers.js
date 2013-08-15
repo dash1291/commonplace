@@ -15,6 +15,11 @@ define('helpers',
         filters[name] = make_safe(func);
     }
 
+    filters.extend = function(base, kwargs) {
+        delete kwargs.__keywords;
+        return _.extend(base, kwargs);
+    };
+
     filters.urlparams = utils.urlparams;
     filters.urlunparam = utils.urlunparam;
 
