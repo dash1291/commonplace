@@ -69,7 +69,10 @@ define('helpers',
             inner:
             for (prop in kwargs) {
                 if (!kwargs.hasOwnProperty(prop) || prop === '__keywords') continue inner;
-                if (!(prop in val) || val[prop] !== kwargs[prop]) continue outer;
+                if (!(prop in val)) continue outer;
+                if (Array.isArray(kwargs[prop]) ?
+                    kwargs[prop].indexOf(val[prop]) === -1 :
+                    val[prop] !== kwargs[prop]) continue outer;
             }
             output.push(val);
         }
