@@ -17,6 +17,7 @@ var mimes = {
     'css': 'text/css',
     'jpg': 'image/jpeg',
     'js': 'application/javascript',
+    'json': 'application/json',
     'png': 'image/png',
     'svg': 'image/svg+xml',
     'webapp': 'application/x-web-app-manifest+json',
